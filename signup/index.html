@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>体験申込 - 北大ノンサー同好会</title>
+  <link href="/styles.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="font-serif bg-white text-gray-800">
+
+  <header class="border-b border-gray-200 py-4">
+    <div class="container mx-auto flex justify-center items-center">
+      <h1 class="text-3xl font-bold tracking-widest">体験申込</h1>
+    </div>
+  </header>
+
+  <main class="container mx-auto text-center mt-20 px-4">
+    <h2 class="text-4xl font-extrabold mb-4">体験に申し込む</h2>
+    <p class="text-lg mb-12">
+      気軽に体験参加してみませんか？ 下記フォームからお申し込みください。
+    </p>
+
+    <!-- 体験申込フォーム -->
+    <form class="text-left mx-auto max-w-lg">
+      <label for="name" class="block mb-2">お名前</label>
+      <input type="text" id="name" class="border border-gray-300 p-2 mb-4 w-full" required>
+      <label for="email" class="block mb-2">メールアドレス</label>
+      <input type="email" id="email" class="border border-gray-300 p-2 mb-4 w-full" required>
+      <button type="submit" class="bg-gray-800 text-white px-6 py-3 rounded-full shadow-lg transition-all">
+        申し込む
+      </button>
+    </form>
+  </main>
+
+  <footer class="border-t border-gray-200 py-6 mt-20">
+    <div class="container mx-auto text-center text-sm text-gray-500">
+      &copy; 2025 北大ノンサー同好会. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
