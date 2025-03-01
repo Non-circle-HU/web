@@ -1,55 +1,60 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>北大ノンサー同好会</title>
+  
+  <!-- styles.css をリンク -->
+  <link href="styles.css" rel="stylesheet">
 
-const LuxuryTopPage = () => {
-  return (
-<div className="min-h-screen bg-white text-gray-800 font-serif">
-      <header className="border-b border-gray-200 py-4">
-        <div className="container mx-auto flex justify-center items-center">
-          <h1 className="text-3xl font-bold tracking-widest">北大ノンサー同好会</h1>
-        </div>
-        <nav className="flex justify-center space-x-8 mt-4">
-          <a href="/" className="text-gray-600 hover:text-gray-900">ホーム</a>
-          <a href="/announcement" className="text-gray-600 hover:text-gray-900">告知</a>
-          <a href="#contact" className="text-gray-600 hover:text-gray-900">連絡先</a>
-        </nav>
-      </header>
+  <!-- Tailwind CSS をCDNから読み込み -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
 
-      <main className="container mx-auto text-center mt-20 px-4">
-        <motion.h2 
-          initial={{ opacity: 0, y: 30 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 1 }}
-          className="text-4xl font-extrabold mb-4"
-        >
-          やりたいことを無理やり探さなくていい
-        </motion.h2>
+  <style>
+    /* Tailwind 以外のカスタム CSS は styles.css に移動しました */
+  </style>
+</head>
+<body class="font-serif bg-white text-gray-800">
 
-        <motion.p 
-          initial={{ opacity: 0, y: 30 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 1, delay: 0.3 }}
-          className="text-lg mb-12"
-        >
-          なにかに打ち込むことは確かに輝かしい。<br />
-          が、とりとめのない交友関係もまた輝かしくはないか？
-        </motion.p>
-
-
-
-        <Button className="bg-gray-800 text-white px-6 py-3 rounded-full shadow-lg hover:bg-gray-900">
-          体験申込
-        </Button>
-      </main>
-
-      <footer className="border-t border-gray-200 py-6 mt-20">
-        <div className="container mx-auto text-center text-sm text-gray-500">
-          &copy; 2025 北大ノンサー同好会. All rights reserved.
-        </div>
-      </footer>
+  <header class="border-b border-gray-200 py-4">
+    <div class="container mx-auto flex justify-center items-center">
+      <h1 class="text-3xl font-bold tracking-widest">北大ノンサー同好会</h1>
     </div>
-  );
-};
+    <nav class="flex justify-center space-x-8 mt-4">
+      <a href="/" class="text-gray-600 hover:text-gray-900">ホーム</a>
+      <a href="/announcement" class="text-gray-600 hover:text-gray-900">告知</a>
+      <a href="#contact" class="text-gray-600 hover:text-gray-900">連絡先</a>
+    </nav>
+  </header>
 
-export default LuxuryTopPage;
+  <main class="container mx-auto text-center mt-20 px-4">
+    <h2 class="fade-up text-4xl font-extrabold mb-4">やりたいことを無理やり探さなくていい</h2>
+    <p class="fade-up text-lg mb-12" style="animation-delay: 0.3s;">
+      なにかに打ち込むことは確かに輝かしい。<br />
+      が、とりとめのない交友関係もまた輝かしくはないか？
+    </p>
+
+    <a href="/signup" class="btn-hover inline-block bg-gray-800 text-white px-6 py-3 rounded-full shadow-lg transition-all">
+      体験申込
+    </a>
+  </main>
+
+  <footer class="border-t border-gray-200 py-6 mt-20">
+    <div class="container mx-auto text-center text-sm text-gray-500">
+      &copy; 2025 北大ノンサー同好会. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // ページ読み込み時にアニメーションをトリガー
+    document.addEventListener('DOMContentLoaded', () => {
+      const fadeElements = document.querySelectorAll('.fade-up');
+      fadeElements.forEach((el, index) => {
+        el.style.animationDelay = `${index * 0.3}s`;
+      });
+    });
+  </script>
+
+</body>
+</html>
