@@ -1,50 +1,100 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>お問い合わせ</title>
-  <link href="styles.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+            max-width: 400px;
+            width: 100%;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #message {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
 </head>
-<body class="font-serif bg-white text-gray-800">
+<body>
 
-  <header class="border-b border-gray-200 py-4">
-    <div class="container mx-auto flex justify-center items-center">
-      <h1 class="text-3xl font-bold tracking-widest">お問い合わせ</h1>
-    </div>
-  </header>
+    <h2>お問い合わせ</h2>
+    <form id="contactForm">
+        <label for="name">名前:</label>
+        <input type="text" id="name" name="entry.xxxx" required>
 
-  <main class="container mx-auto text-center mt-20 px-4">
-    <h2 class="text-4xl font-extrabold mb-4">お問い合わせフォーム</h2>
+        <label for="email">メールアドレス:</label>
+        <input type="email" id="email" name="entry.xxxx" required>
 
-    <form action="https://docs.google.com/forms/d/e/1FAIpQLScp7PPctQHvAp4mRdpeC4GefDWwSlCvAtBrbHXcx0atDzRdPA/formResponse" method="POST" target="_self">
-      
-      <div class="mb-4">
-        <label for="name" class="block text-lg mb-2">名前</label>
-        <input type="text" id="name" name="entry.1179420192" class="w-full p-3 border border-gray-300 rounded-lg" required>
-      </div>
+        <label for="message">メッセージ:</label>
+        <textarea id="messageInput" name="entry.xxxx" required></textarea>
 
-      <div class="mb-4">
-        <label for="email" class="block text-lg mb-2">メールアドレス</label>
-        <input type="email" id="email" name="entry.1780312459" class="w-full p-3 border border-gray-300 rounded-lg" required>
-      </div>
-
-      <div class="mb-4">
-        <label for="message" class="block text-lg mb-2">メッセージ</label>
-        <textarea id="message" name="entry.1265166233" rows="4" class="w-full p-3 border border-gray-300 rounded-lg" required></textarea>
-      </div>
-
-      <button type="submit" class="btn-hover inline-block bg-gray-800 text-white px-6 py-3 rounded-full shadow-lg transition-all">
-        送信
-      </button>
+        <button type="submit">送信</button>
     </form>
-  </main>
 
-  <footer class="border-t border-gray-200 py-6 mt-20">
-    <div class="container mx-auto text-center text-sm text-gray-500">
-      &copy; 2025 北大ノンサー同好会. All rights reserved.
-    </div>
-  </footer>
+    <p id="message"></p>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();  // 送信を一旦停止
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let message = document.getElementById("messageInput").value.trim();
+            let messageBox = document.getElementById("message");
+
+            if (name === "" || email === "" || message === "") {
+                messageBox.textContent = "記入漏れがあります";
+                messageBox.style.color = "red";
+                return;
+            }
+
+            messageBox.textContent = "送信が完了しました";
+            messageBox.style.color = "green";
+
+            // Googleフォームの送信URL (自分のフォームのURLを入力)
+            let formURL = "https://docs.google.com/forms/d/e/1FAIpQLScp7PPctQHvAp4mRdpeC4GefDWwSlCvAtBrbHXcx0atDzRdPA/formResponse";
+
+            let formData = new FormData();
+            formData.append("entry.1179420192", name);     // 各inputのname属性をGoogleフォームのエントリIDに対応させる
+            formData.append("entry.1780312459", email);
+            formData.append("entry.1265166233", message);
+
+            fetch(formURL, {
+                method: "POST",
+                mode: "no-cors",
+                body: formData
+            }).then(() => {
+                document.getElementById("contactForm").reset();
+            });
+        });
+    </script>
 
 </body>
 </html>
