@@ -3,32 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>体験申込 - 北大ノンサー同好会</title>
-  <link href="/styles.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
+  <title>お問い合わせ</title>
+  <link href="styles.css" rel="stylesheet">
 </head>
 <body class="font-serif bg-white text-gray-800">
 
   <header class="border-b border-gray-200 py-4">
     <div class="container mx-auto flex justify-center items-center">
-      <h1 class="text-3xl font-bold tracking-widest">体験申込</h1>
+      <h1 class="text-3xl font-bold tracking-widest">お問い合わせ</h1>
     </div>
   </header>
 
   <main class="container mx-auto text-center mt-20 px-4">
-    <h2 class="text-4xl font-extrabold mb-4">体験に申し込む</h2>
-    <p class="text-lg mb-12">
-      気軽に体験参加してみませんか？ 下記フォームからお申し込みください。
-    </p>
+    <h2 class="text-4xl font-extrabold mb-4">お問い合わせフォーム</h2>
 
-    <!-- 体験申込フォーム -->
-    <form class="text-left mx-auto max-w-lg">
-      <label for="name" class="block mb-2">お名前</label>
-      <input type="text" id="name" class="border border-gray-300 p-2 mb-4 w-full" required>
-      <label for="email" class="block mb-2">メールアドレス</label>
-      <input type="email" id="email" class="border border-gray-300 p-2 mb-4 w-full" required>
-      <button type="submit" class="bg-gray-800 text-white px-6 py-3 rounded-full shadow-lg transition-all">
-        申し込む
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLScp7PPctQHvAp4mRdpeC4GefDWwSlCvAtBrbHXcx0atDzRdPA/formResponse" method="POST" target="_self">
+      
+      <div class="mb-4">
+        <label for="name" class="block text-lg mb-2">名前</label>
+        <input type="text" id="name" name="entry.1179420192" class="w-full p-3 border border-gray-300 rounded-lg" required>
+      </div>
+
+      <div class="mb-4">
+        <label for="email" class="block text-lg mb-2">メールアドレス</label>
+        <input type="email" id="email" name="entry.1780312459" class="w-full p-3 border border-gray-300 rounded-lg" required>
+      </div>
+
+      <div class="mb-4">
+        <label for="message" class="block text-lg mb-2">メッセージ</label>
+        <textarea id="message" name="entry.1265166233" rows="4" class="w-full p-3 border border-gray-300 rounded-lg" required></textarea>
+      </div>
+
+      <button type="submit" class="btn-hover inline-block bg-gray-800 text-white px-6 py-3 rounded-full shadow-lg transition-all">
+        送信
       </button>
     </form>
   </main>
