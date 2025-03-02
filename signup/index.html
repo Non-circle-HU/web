@@ -1,100 +1,86 @@
-<!DOCTYPE html>
-<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>お問い合わせ</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        form {
-            display: inline-block;
-            text-align: left;
-            max-width: 400px;
-            width: 100%;
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-        }
-        button {
-            margin-top: 15px;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        #message {
-            margin-top: 10px;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
+    
+    <!-- styles.css をリンク -->
+    <link href="../styles.css" rel="stylesheet">
+  
+    <!-- Tailwind CSS をCDNから読み込み -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body class="font-serif bg-white text-gray-800">
+  
+    <header class="border-b border-gray-200 py-4">
+      <div class="container mx-auto flex justify-center items-center">
+        <h1 class="text-3xl font-bold tracking-widest">
+            <a href="../index.html">北大ノンサー同好会</a>
+        </h1>
+          
+      </div>
+      <nav class="flex justify-center space-x-8 mt-4">
+        <a href="../intro/index.html" class="text-gray-600 hover:text-gray-900">紹介</a>
+        <a href="../announcement/index.html" class="text-gray-600 hover:text-gray-900">告知</a>
+        <a href="../contact/index.html" class="text-gray-600 hover:text-gray-900">連絡先</a>      
+      </nav>
+    </header>
+  
+    <div class="container mx-auto mt-10 px-4">
+      <div class="form-container">
+        <h2 class="fade-up text-3xl font-extrabold mb-3">お問い合わせ</h2>
 
-    <h2>お問い合わせ</h2>
-    <form id="contactForm">
-        <label for="name">名前:</label>
-        <input type="text" id="name" name="entry.xxxx" required>
-
-        <label for="email">メールアドレス:</label>
-        <input type="email" id="email" name="entry.xxxx" required>
-
-        <label for="message">メッセージ:</label>
-        <textarea id="messageInput" name="entry.xxxx" required></textarea>
-
-        <button type="submit">送信</button>
-    </form>
-
-    <p id="message"></p>
-
+        <form id="contactForm" class="fade-up">
+            <label for="name">名前:</label>
+            <input type="text" id="name" name="entry.xxxx" required>
+        
+            <label for="email">メールアドレス:</label>
+            <input type="email" id="email" name="entry.xxxx" required>
+        
+            <label for="message">メッセージ:</label>
+            <textarea id="messageInput" name="entry.xxxx" required></textarea>
+        
+            <button type="submit" class="fade-up">送信</button>
+        </form>
+        
+  
+          <p id="message"></p>
+      </div>
+    </div>
+  
     <script>
-        document.getElementById("contactForm").addEventListener("submit", function(event) {
-            event.preventDefault();  // 送信を一旦停止
-
-            let name = document.getElementById("name").value.trim();
-            let email = document.getElementById("email").value.trim();
-            let message = document.getElementById("messageInput").value.trim();
-            let messageBox = document.getElementById("message");
-
-            if (name === "" || email === "" || message === "") {
-                messageBox.textContent = "記入漏れがあります";
-                messageBox.style.color = "red";
-                return;
-            }
-
-            messageBox.textContent = "送信が完了しました";
-            messageBox.style.color = "green";
-
-            // Googleフォームの送信URL (自分のフォームのURLを入力)
-            let formURL = "https://docs.google.com/forms/d/e/1FAIpQLScp7PPctQHvAp4mRdpeC4GefDWwSlCvAtBrbHXcx0atDzRdPA/formResponse";
-
-            let formData = new FormData();
-            formData.append("entry.1179420192", name);     // 各inputのname属性をGoogleフォームのエントリIDに対応させる
-            formData.append("entry.1780312459", email);
-            formData.append("entry.1265166233", message);
-
-            fetch(formURL, {
-                method: "POST",
-                mode: "no-cors",
-                body: formData
-            }).then(() => {
-                document.getElementById("contactForm").reset();
-            });
-        });
+      document.getElementById("contactForm").addEventListener("submit", function(event) {
+          event.preventDefault();  
+  
+          let name = document.getElementById("name").value.trim();
+          let email = document.getElementById("email").value.trim();
+          let message = document.getElementById("messageInput").value.trim();
+          let messageBox = document.getElementById("message");
+  
+          if (name === "" || email === "" || message === "") {
+              messageBox.textContent = "記入漏れがあります";
+              messageBox.style.color = "red";
+              return;
+          }
+  
+          messageBox.textContent = "送信が完了しました";
+          messageBox.style.color = "green";
+  
+          let formURL = "https://docs.google.com/forms/d/e/1FAIpQLScp7PPctQHvAp4mRdpeC4GefDWwSlCvAtBrbHXcx0atDzRdPA/formResponse";
+  
+          let formData = new FormData();
+          formData.append("entry.1179420192", name);
+          formData.append("entry.1780312459", email);
+          formData.append("entry.1265166233", message);
+  
+          fetch(formURL, {
+              method: "POST",
+              mode: "no-cors",
+              body: formData
+          }).then(() => {
+              document.getElementById("contactForm").reset();
+          });
+      });
     </script>
-
-</body>
-</html>
+  
+  </body>
+  
