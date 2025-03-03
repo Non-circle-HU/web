@@ -38,14 +38,33 @@
         
             <label for="message">メッセージ:</label>
             <textarea id="messageInput" name="entry.xxxx" required></textarea>
-        
-            <button type="submit" class="fade-up">送信</button>
+            <div class="mt-6">
+                <button type="submit" class="fade-up px-4 py-2 bg-blue-500 text-white font-semibold shadow-md hover:bg-blue-600 transition">
+                    送信
+                </button>                
+            </div>
+
         </form>
         
   
           <p id="message"></p>
       </div>
     </div>
+
+    <footer class="border-t border-gray-200 text-center text-gray-500 mt-10 py-4">
+        <div class="flex justify-center space-x-4 mb-4">
+            <a href="https://x.com/HU_musyozoku" target="_blank">
+                <img src="../icons/logo-black.png" alt="Twitter" class="w-6 h-6 hover:opacity-75">
+            </a>
+            <a href="https://line.me/ti/g2/tXy3R1fosL0AfM7af6MSQR3muuB8q91iSQcM5Q?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank">
+                <img src="../icons/LINE_Brand_icon.png" alt="LINE" class="w-6 h-6 hover:opacity-75">
+            </a>
+            <a href="https://www.instagram.com/hu_musyozoku/" target="_blank">
+                <img src="../icons/Instagram_Glyph_Gradient.png" alt="Instagram" class="w-6 h-6 hover:opacity-75">
+            </a>
+          </div>
+        <p class="text-sm">&copy; 2025 北大ノンサー同好会. All rights reserved.</p>
+    </footer>
   
     <script>
       document.getElementById("contactForm").addEventListener("submit", function(event) {
